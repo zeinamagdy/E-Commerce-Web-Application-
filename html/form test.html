@@ -1,0 +1,15 @@
+<form action="shoppingCart.php?id=1?>" method="post">
+				<table>
+					<tr>
+						<td><input type="text" id="num" name="num"class='button' ></td>
+						<td><input type="submit" id="add" name="add" class='button' value="Add to cart"></td>
+					</tr>
+				<!--<a href='shoppingCart.php' class='button'>Add to cart</a>-->
+				</table>
+			</form>
+		
+	<div>
+	<p> <?php echo "<h3>".$product->name."</h3></br>descrption:".$product->descr."</br>price:".$product->price."$</br>avaible quantity:".$product->quantity?></p><br/>
+</div>
+
+<a href='shoppingCart.php?id=2; ?>'class='button'>Add to cart</a>
