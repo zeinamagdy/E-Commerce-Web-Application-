@@ -21,6 +21,7 @@
 			$order->user_id = 1;
 			$order->num_items = $order->num_items + 1;
 			$order->desc= $product->descr;
+			$order->pid=$_GET['id'];
 			$order->insert();	
 			// $Q=$product->quantity - $_session['quentity'];
 			$Q=$product->quantity - 1;
@@ -88,11 +89,13 @@
       <label>Grand Total</label>
       <div class="totals-value" id="cart-total">90.57</div>
     </div>
-  </div>
-      
+  </div>      
       <button class="checkout">Checkout</button>
-
 </div>
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='js/jquery.query-2.1.7.js'></script>
+<script src="js/index.js"></script>
 			
 <?php
 	include'footer.php';
