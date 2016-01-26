@@ -9,8 +9,6 @@
 	include 'products.php';
 	$product=new Product;
 	$p=$product->product();
-	//echo"<pre>";print_r($p);echo "</pre>";
-	echo count($p);
 	$per_page=9;
 	if (isset($_GET["page"])) {
 

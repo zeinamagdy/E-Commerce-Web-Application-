@@ -62,7 +62,7 @@ class Order{
 	}*/
 
 	function insert() {
-		$query = "insert into orders(order_des,user_id,total_price ,num_items,pid) values('$this->desc','$this->user_id','$this->total_price',',$this->num_items',$this->pid')";
+		$query = "insert into orders(order_des,user_id,total_price ,num_items,pid) values('$this->desc','$this->user_id','$this->total_price','$this->num_items','$this->pid')";
 		// adding order sub quantity product
 		$result = mysqli_query(self::$conn, $query);
 		return mysqli_insert_id(self::$conn);
