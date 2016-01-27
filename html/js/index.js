@@ -9,8 +9,19 @@ $('.product-quantity input').change( function() {
   updateQuantity(this);
 });
 
-$('.product-removal button').click( function() {
+$('.product-removal button').click( function(e) {
   removeItem(this);
+  e.preventDefault();
+  var i = $(e.currentTarget).attr('data-id');
+  console.log(i);
+   $.ajax({
+        type: "GET",
+        url: 'deleteProductFromCart.php?pid=11',
+    })
+    .done(function() {
+      console.log("success");
+    })
+
 });
 
 

@@ -4,18 +4,24 @@ include 'head.php';
 include 'products.php'; 
 $product=new Product;
 $p=[];
+//drop box
 if(isset($_GET['type']))
 {
 	$p=$product->productByType($_GET['type']);
-}/* get from search box but q is a string not id */		
+}/* get from search box but q is a string not id */	
+elseif (isset($_GET['price'])) {
+	echo $_GET['price'];
+	$p=$product->productByPrice($_GET['price']); 
+	
+}	
 elseif(isset($_GET['q']))
 {
 	$id=$product->productByName($_GET['q']);
 	$p=$product->productByType($id);
 }
 
+
 echo "<div id='items'>";
-/*echo "<table>";*/
 foreach ($p as $key => $product) 
 {
 ?>

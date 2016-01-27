@@ -1,6 +1,4 @@
 <?php
-#include "products.php";
-#$product=new product();
 class Order{
 	var $desc;
 	var $id;
@@ -71,6 +69,11 @@ class Order{
 		$query = "delete  from orders where id='$this->id'";
 		// $x=$product->quantity+$this->num_items;
 		// $product->updateQ($x);
+		mysqli_query(self::$conn,$query);
+	}
+	function deleteByPid($pid) {
+		$query = "delete from orders where pid='$pid'";
+		echo $query;
 		mysqli_query(self::$conn,$query);
 	}
 	#------------------------------------------------------------------------------------

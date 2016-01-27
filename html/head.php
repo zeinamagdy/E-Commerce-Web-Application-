@@ -27,6 +27,7 @@
 				 <div id="tfheader">
       				<form id="tfnewsearch" method="get" action="selectedType.php">
               			<input class="tftextinput" name="q" size="21" maxlength="120">
+              			<input class="tftextinput" name="price" size="21" maxlength="120">
               			<input type="submit" value="search" class="tfbutton">
       				</form>
    				<div class="tfclear"></div>
@@ -54,7 +55,13 @@
 					<li><a href="#">Contacts</a></li>
 				</ul>
 				<div id="cart">
-					<strong>Shopping cart:</strong> <br /> 0 items
+					<strong>Shopping cart:</strong> <br />
+					<?php
+						include 'order.php';
+						$order = new Order();
+						$demand= $order->userOrder(1);// it will convert to userOrder($_session['uid']);
+						echo'<b>'.count($demand).' </b>products';
+					?>
 				</div>
 			</div>
 			<div>

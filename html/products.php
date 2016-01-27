@@ -68,6 +68,10 @@ class Product{
 		$query = "update products set quantity='$Q' where pId='$this->id'";
 		mysqli_query(self::$conn,$query);
 	}
+	function deleteByPid($pid) {
+		$query = "delete from  products where pId='$pid'";
+		mysqli_query(self::$conn,$query);
+	}
 	#--------------------------------
 	
 	
@@ -99,14 +103,23 @@ class Product{
 		return $data;
 	}
 	function productByName($name) 
-	{
-		// select product where aviable and quantity>0 and id 
+	{ 
 		$query = "select id from types where type='$name'";
 		$result = mysqli_query(self::$conn,$query);
 		$value = mysqli_fetch_assoc($result);
 		return $value['id'];
 	}
-	
+	function productByPrice($price) 
+	{
+		$query = "select * from products where quantity > 0 and price='$price'";
+		$result = mysqli_query(self::$conn,$query);
+		$data = [];
+		while($row = mysqli_fetch_assoc($result)) {
+			$data[] = $row;
+		}
+		return $data;
+		
+	}
 
 		
 

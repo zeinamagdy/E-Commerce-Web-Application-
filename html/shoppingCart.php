@@ -10,7 +10,7 @@
 	include 'head.php';
 	include 'products.php';
 	include'user.php';
-	include 'order.php';
+	//include 'order.php';
 	$order = new Order();
 	if(isset($_GET['id']))
 	{
@@ -63,11 +63,11 @@
       <input type="number" value="2" min="1">
     </div>
     <div class="product-removal">
-      <button class="remove-product">
+      <button class="remove-product" data-id='<?php echo $order['pid']?>' id="del">
         Remove
       </button>
     </div>
-    <div class="product-line-price">25.98</div>
+    <div class="product-line-price" data='<?php echo $order['price']?>'>25.98</div>
   </div>
 <?php
  }
