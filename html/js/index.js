@@ -16,7 +16,7 @@ $('.product-removal button').click( function(e) {
   console.log(i);
    $.ajax({
         type: "GET",
-        url: 'deleteProductFromCart.php?pid=11',
+        url: 'deleteProductFromCart.php?pid='+i,
     })
     .done(function() {
       console.log("success");

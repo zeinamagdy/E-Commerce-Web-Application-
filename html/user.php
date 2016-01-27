@@ -5,28 +5,25 @@ class User{
 	var $password;
 	var $email;
 	var $credite;
-
-	#--------Edite
 	var $isAdmine;
-	#var $isBlocked;
 
 	private static $conn = Null;
 
 	function __construct($id=-1) {
 		if(self::$conn == Null) {
-			self::$conn = mysqli_connect('localhost','root','iti','blog');
+			self::$conn = mysqli_connect('localhost','root','iti','project');
 		}
 
 		if($id!=-1) {
-			$query = "select * from users where id=$id limit 1";
+			$query = "select * from users where uid=$id limit 1";
 			$result = mysqli_query(self::$conn,$query);
 			$user = mysqli_fetch_assoc($result);
-			$this->id = $user['id'];
+			$this->id = $user['uid'];
 			$this->name = $user['name'];
 			$this->password = $user['password'];
 			$this->email = $user['email'];
-			$this->isAdmine=$user['isAdmine'];
-			#$this->isBlocked=$user['isblocked'];
+			//$this->isAdmine=$user['isAdmine'];
+			$this->credite=$user['credit'];
 		}
 	}
 
@@ -68,6 +65,11 @@ class User{
 
 	function update() {
 		$query = "update users set name='$this->name', email='$this->email' where id='$this->id'";
+		mysqli_query(self::$conn,$query);
+	}
+
+	function updateCredite($orderPrice,$id) {
+		$query = "update users set  credit='$orderPrice' where uid='$id'";
 		mysqli_query(self::$conn,$query);
 	}
 	#---------------------Edite to update block user

@@ -32,7 +32,7 @@
 	$product=new Product($_GET['id']);
 	//user id will send in session 
 ?>
-<!-----main div-->
+<!---main div-->
 <!--- display item details to add it to user cart-->
 	<div id="items">
 		
@@ -45,16 +45,17 @@
 			
 			<br/>
 		</div>
-
-			<form action="shoppingCart.php?id=<?php echo $product['pId'];?>" method="post">
+		<div>
+			<form action="shoppingCart.php?id=<?php echo $product->'pId';?>" method="post">
 				<table>
 					<tr>
-						<td><input type="text" id="num" name="num"class='button' ></td>
+						<td><input type="text" id="num" name="num"></td>
 						<td><input type="submit" id="add" name="add" class='button' value="Add to cart"></td>
 					</tr>
 				<!--<a href='shoppingCart.php' class='button'>Add to cart</a>-->
 				</table>
 			</form>
+		</div>	
 		
 	
 </div>

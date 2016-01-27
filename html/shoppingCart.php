@@ -10,23 +10,27 @@
 	include 'head.php';
 	include 'products.php';
 	include'user.php';
-	//include 'order.php';
 	$order = new Order();
+  $user=new user(1);// it will get from session 
 	if(isset($_GET['id']))
 	{
-		$product=new Product($_GET['id']);		
-		// if(isset($_session['uid']))
-		// {
-			// $order->$user_id=$_session['uid'];
-			$order->user_id = 1;
-			$order->num_items = $order->num_items + 1;
-			$order->desc= $product->descr;
-			$order->pid=$_GET['id'];
-			$order->insert();	
-			// $Q=$product->quantity - $_session['quentity'];
-			$Q=$product->quantity - 1;
-			$product->updateQ($Q);
-		// }
+		$product=new Product($_GET['id']);
+      $orderPrice=$user->credite - $product->price;
+      if($orderPrice>=0)	
+      {	
+        echo $orderPrice;
+        $user->updateCredite($orderPrice,1);// will get fromsession
+  			// $order->$user_id=$_session['uid'];
+  			$order->user_id = 1;
+  			$order->num_items = $order->num_items + 1;
+  			$order->desc= $product->descr;
+        $order->total_price=$product->price; 
+  			$order->pid=$_GET['id'];
+  			$order->insert();	
+  			// $Q=$product->quantity - $_session['quentity'];
+  			$Q=$product->quantity - 1;
+  			$product->updateQ($Q);
+  		}
 	}	
 	//$demand=$order->userOrder($_session['uid']);
 	$demand=$order->userOrder(1);
