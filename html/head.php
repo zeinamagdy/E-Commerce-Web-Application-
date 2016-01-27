@@ -35,19 +35,19 @@
 			</span>
 		</div>
 		<ul id="menu">
-			<li><a href="#"><img src="images/but1.gif" alt="" width="110" height="32" /></a></li>
+			<li><a href="index.php"><img src="images/but1.gif" alt="" width="110" height="32" /></a></li>
 			<li><a href="login.php"><img src="images/but2.gif" alt="" width="110" height="32" /></a></li>
 			<li><a href="registration.php"><img src="images/but3.gif" alt="" width="110" height="32" /></a></li>
 			<li><a href="myAccount.php"><img src="images/but4.gif" alt="" width="110" height="32" /></a></li>
 			<li><a href="shoppingCart.php"><img src="images/but5.gif" alt="" width="110" height="32" /></a></li>
-			<li><a href="#"><img src="images/but6.gif" alt="" width="110" height="32" /></a></li>
+			<li><a href="checkout.php"><img src="images/but6.gif" alt="" width="110" height="32" /></a></li>
 		</ul>
 	</div>
 	<div id="content">
 		<div id="sidebar">
 			<div id="navigation">
 				<ul>
-					<li><a href="#">Home page</a></li>
+					<li><a href="index.php">Home page</a></li>
 					<li><a href="#">New products</a></li>
 					<li><a href="AllProduct.php">All products</a></li>
 					<li><a href="#">Reviews</a></li>

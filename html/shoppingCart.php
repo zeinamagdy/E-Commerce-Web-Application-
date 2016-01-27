@@ -11,27 +11,30 @@
 	include 'products.php';
 	include'user.php';
 	$order = new Order();
+  
   $user=new user(1);// it will get from session 
+  $order->OrdersPrice(1);
+  $totalPrice=$order->OrdersPrice(1);
+  $orderPrice=$user->credite - $totalPrice['sum'] ;  
+  $_SESSION['sum']=$totalPrice['sum'];
 	if(isset($_GET['id']))
-	{
-		$product=new Product($_GET['id']);
-      $orderPrice=$user->credite - $product->price;
-      if($orderPrice>=0)	
-      {	
-        echo $orderPrice;
-        $user->updateCredite($orderPrice,1);// will get fromsession
-  			// $order->$user_id=$_session['uid'];
-  			$order->user_id = 1;
-  			$order->num_items = $order->num_items + 1;
-  			$order->desc= $product->descr;
-        $order->total_price=$product->price; 
-  			$order->pid=$_GET['id'];
-  			$order->insert();	
-  			// $Q=$product->quantity - $_session['quentity'];
-  			$Q=$product->quantity - 1;
-  			$product->updateQ($Q);
-  		}
-	}	
+	{	
+    $product = new Product($_GET['id']);
+    $reminder=$user->credite-$product->price ;
+    if($orderPrice>=0&&$reminder>=0)
+    {	
+    	// $order->$user_id=$_session['uid'];
+    	$order->user_id = 1;
+    	$order->num_items = $order->num_items + 1;
+    	$order->desc= $product->descr;
+      $order->total_price=$product->price; 
+    	$order->pid=$_GET['id'];
+    	$order->insert();	
+    	// $Q=$product->quantity - $_session['quentity'];
+    	$Q=$product->quantity - 1;
+    	$product->updateQ($Q);
+    }  		
+	}
 	//$demand=$order->userOrder($_session['uid']);
 	$demand=$order->userOrder(1);
 ?>
@@ -52,6 +55,7 @@
     <label class="product-line-price">Total</label>
   </div>
 <?php
+
 	foreach ($demand as $key => $order) {
 ?>
   <div class="product">
@@ -96,11 +100,9 @@
   </div>      
       <button class="checkout">Checkout</button>
 </div>
-
 <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='js/jquery.query-2.1.7.js'></script>
-<script src="js/index.js"></script>
-			
+<script src="js/index.js"></script>			
 <?php
 	include'footer.php';
 ?>

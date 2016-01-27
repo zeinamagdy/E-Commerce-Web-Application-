@@ -1,5 +1,9 @@
 <?php
 		include 'head.php';
+		include 'products.php';
+		/*$product = new Product();
+		$newProducts=$product->Newproduct();*/
+		//foreach ($newProducts as $key => $value) {
 ?>
 
 				
@@ -45,6 +49,7 @@
 	</div>
 
 <?php
+//}
 	include'footer.php';
 	
 ?>

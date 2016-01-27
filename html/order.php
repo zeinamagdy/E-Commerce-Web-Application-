@@ -65,10 +65,8 @@ class Order{
 		$result = mysqli_query(self::$conn, $query);
 		return mysqli_insert_id(self::$conn);
 	}
-	function delete() {
-		$query = "delete  from orders where id='$this->id'";
-		// $x=$product->quantity+$this->num_items;
-		// $product->updateQ($x);
+	function deleteUserOrders($uid) {
+		$query = "delete  from orders where  user_id ='$uid'";
 		mysqli_query(self::$conn,$query);
 	}
 	function deleteByPid($pid) {
@@ -122,6 +120,15 @@ class Order{
 			$data []= $row;
 		}
 		return $data;
+	}
+	function OrdersPrice($id=-1){
+		if($id==-1) {
+			$id = $this->id;
+		}
+		$query = " select sum(total_price) as sum from orders where orders.user_id=$id";
+		$result = mysqli_query(self::$conn,$query);
+		$row = mysqli_fetch_assoc($result);
+		return $row;;
 	}
 }
 

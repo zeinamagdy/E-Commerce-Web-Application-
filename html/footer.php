@@ -2,9 +2,9 @@
 <div id="footer">
 		<img src="images/cards.jpg" alt="" width="919" height="76" />
 		<ul>
-			<li><a href="#">Home page</a> |</li>
+			<li><a href="index.php">Home page</a> |</li>
 			<li><a href="#">New Products</a> |</li>
-			<li><a href="#">All Products</a> |</li>
+			<li><a href="AllProduct.php">All Products</a> |</li>
 			<li><a href="#">Reviews</a> |</li>
 			<li><a href="#">F.A.Q.</a> |</li>
 			<li><a href="#">Contacts</a></li>

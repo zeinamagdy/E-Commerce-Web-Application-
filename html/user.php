@@ -70,6 +70,7 @@ class User{
 
 	function updateCredite($orderPrice,$id) {
 		$query = "update users set  credit='$orderPrice' where uid='$id'";
+		echo $query;
 		mysqli_query(self::$conn,$query);
 	}
 	#---------------------Edite to update block user

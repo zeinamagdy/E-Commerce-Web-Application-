@@ -8,7 +8,6 @@ var fadeTime = 300;
 $('.product-quantity input').change( function() {
   updateQuantity(this);
 });
-
 $('.product-removal button').click( function(e) {
   removeItem(this);
   e.preventDefault();
@@ -21,6 +20,9 @@ $('.product-removal button').click( function(e) {
     .done(function() {
       console.log("success");
     })
+});
+$('.checkout').click( function(e){
+  window.location='checkout.php';
 
 });
 

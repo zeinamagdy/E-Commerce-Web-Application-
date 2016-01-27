@@ -73,9 +73,6 @@ class Product{
 		mysqli_query(self::$conn,$query);
 	}
 	#--------------------------------
-	
-	
-
 	function if_exist($name) {
 		$query = "select pId from products where name='$name'";
 		$result = mysqli_query(self::$conn,$query);
@@ -85,6 +82,16 @@ class Product{
 	function product() {
 		// select product where aviable and quantity>0
 		$query = "select * from products where quantity>0";
+		$result = mysqli_query(self::$conn,$query);
+		$data = [];
+		while($row = mysqli_fetch_assoc($result)) {
+			$data[] = $row;
+		}
+		return $data;
+	}
+	function Newproduct() {
+		// select product where aviable and quantity>0
+		$query = "select * FROM products ORDER BY pId DESC LIMIT 6 where quantity>0";
 		$result = mysqli_query(self::$conn,$query);
 		$data = [];
 		while($row = mysqli_fetch_assoc($result)) {
