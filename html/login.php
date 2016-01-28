@@ -1,111 +1,114 @@
+<?php
+  include('singin.php');
+  if(isset($_SSESION['uid']))
+  {
+  	header("location:myAccount.php");
+  }
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-
+    
 	<!-- General meta information -->
-	<title>Login Form by Oussama Afellad</title>
-	<meta name="keywords" content="" />
-	<meta name="description" content="" />
-	<meta name="robots" content="index, follow" />
-	<meta charset="utf-8" />
-	<!-- // General meta information -->
+	<title>Login Form </title>
 	
+	<style type="text/css" >
+	    body{
+	    	background-color:#F0F0F0 ;
+
+	    }
+	   #main {
+          width:960px;
+          margin:50px auto;
+          font-family:raleway
+         
+             }
+		span {
+		color:red
+		     }
+		h3 {
+		/*background-color:#FEFFED;*/
+		text-align:center;
+		border-radius:10px 10px 0 0;
+		margin:-10px -40px;
+		padding:15px
+		   }
+		hr {
+		border:0;
+		border-bottom:1px solid #ccc;
+		margin:10px -40px;
+		margin-bottom:30px
+		   }
+		#login {
+			
+		padding: 70px 0 0 0px;
+	    height: 400px;
+		width:300px;
+		float:right;
+		border-radius:10px;
+		font-family:raleway;
+		border:2px solid #ccc;
+		padding:10px 40px 25px;
+		margin-top:70px
+		      }
+		#label{
+			margin: -top:20px; 
+		}
+		input[type=text],input[type=password] {
+		width:99.5%;
+		padding:15px;
+		margin-top:10px;
+		margin-bottom:10px;
+		border:1px solid #ccc;
+		padding-left:5px;
+		font-size:16px;
+		font-family:raleway
+		     }
+		input[type=submit] {
+		width:100%;
+		background-color:#FFBC00;
+		color:#fff;
+		border:2px solid #FFCB00;
+		padding:10px;
+		font-size:20px;
+		cursor:pointer;
+		border-radius:5px;
+		margin-top:15px;
+		margin-bottom:15px
+                           }
+        
+		
+	</style>
 	
-	<!-- Load Javascript -->
-	<script type="text/javascript" src="./js/jquery.js"></script>
-	<script type="text/javascript" src="./js/jquery.query-2.1.7.js"></script>
-	<script type="text/javascript" src="./js/rainbows.js"></script>
-	<!-- // Load Javascipt -->
 
-	<!-- Load stylesheets -->
-	<link type="text/css" rel="stylesheet" href="css/login.css" media="screen" />
-	<!-- // Load stylesheets -->
-	
-<script>
-
-
-	$(document).ready(function(){
- 
-	$("#submit1").hover(
-	function() {
-	$(this).animate({"opacity": "0"}, "slow");
-	},
-	function() {
-	$(this).animate({"opacity": "1"}, "slow");
-	});
- 	});
-
-
-</script>
 	
 </head>
 <body>
 
-	<div id="wrapper">
-		<div id="wrappertop"></div>
-
-		<div id="wrappermiddle">
-
-			<h2>Login</h2>
-
-			<div id="username_input">
-
-				<div id="username_inputleft"></div>
-
-				<div id="username_inputmiddle">
-				<form>
-					<input type="text" name="link" id="url" value="E-mail Address" onclick="this.value = ''">
-					<img id="url_user" src="./images/mailicon.png" alt="">
-				</form>
-				</div>
-
-				<div id="username_inputright"></div>
-
-			</div>
-
-			<div id="password_input">
-
-				<div id="password_inputleft"></div>
-
-				<div id="password_inputmiddle">
-				<form>
-					<input type="password" name="link" id="url" value="Password" onclick="this.value = ''">
-					<img id="url_password" src="./images/passicon.png" alt="">
-				</form>
-				</div>
-
-				<div id="password_inputright"></div>
-
-			</div>
-
-			<div id="submit">
-				<form>
-				<input type="image" src="./images/submit_hover.png" id="submit1" value="Sign In">
-				<input type="image" src="./images/submit.png" id="submit2" value="Sign In">
-				</form>
-			</div>
-
-
-			<div id="links_left">
-
-			<a href="#">Forgot your Password?</a>
-
-			</div>
-
-		<	<div id="links_right">
-	<!--	<a href="#">Not a Member Yet?</a-->
-			 <input type="checkbox" name="remember_me" id="remember_me">
-            Remember me 
-            </div>
-		</div>
-
-		<div id="wrapperbottom"></div>
-		
-		<div id="powered">
-		<p>Powered by <a href="http://www.premiumfreebies.eu">Premiumfreebies Control Panel</a></p>
-		</div>
-	</div>
-
+	<div id="main">
+      
+       <div id="login">
+          <h3>Sign in to your account</h3>
+          <form action="" method="post">
+            <div id="label" >        
+              <label>UserName :</label>
+             </div>
+              <input id="name" name="username" placeholder="username" type="text" >
+               
+              <div id="label">
+              <label>Password :</label>
+              </div>
+             
+              <input id="password" name="password" placeholder="**********" type="password">
+              
+              
+              <input name="submit" type="submit" value=" Login ">
+             
+             <span><?php echo $error; ?></span>
+          </form>
+       </div>
+    </div>
 </body>
 </html>
