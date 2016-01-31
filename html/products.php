@@ -12,7 +12,7 @@ class Product{
 
 	function __construct($id=-1) {
 		if(self::$conn == Null) {
-			self::$conn = mysqli_connect('localhost','root','iti','project');
+			self::$conn = mysqli_connect('localhost','root','iti','babyshop');
 		}
 
 		if($id!=-1) {
@@ -53,13 +53,30 @@ class Product{
 	}*/
 	#----------------------------------------------------
 
-	function insert() {
+function insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate) {
+	$query="INSERT INTO products(name,descr,quantity,image,subType_id,price,pdate) VALUES ('$pname','$desc','$quantity','images/items/$imgname','$subType_id','$price','$pdate')";
+		$result  = mysqli_query(self::$conn,$query);
+		//return mysqli_insert_id(self::$conn);
+	}
+
+	
+	function delete($id) {
+		$query = "DELETE FROM products WHERE pId=$id";
+		mysqli_query(self::$conn,$query);
+	}
+
+	function update($id,$pname,$desc,$quantity,$image,$subType_id,$price,$pdate){
+		$query="UPDATE products SET name='$pname',descr='$desc',quantity='$quantity',image='images/items/$image',subType_id='$subType_id',price='$price',pdate='$pdate' WHERE pId=$id";
+		mysqli_query(self::$conn,$query);
+	}
+
+	function insert1() {
 		$query = "insert into products(name,descr,quantity,image,price) values('$this->name','$this->descr','$this->quantity','$this->image','$this->price')";
 		$result  = mysqli_query(self::$conn,$query);
 		return mysqli_insert_id(self::$conn);
 	}
 
-	function update() {
+	function update1() {
 		$query = "update products set name='$this->name', descr='$this->descr', quantity='$this->quantity', image='$this->image' where pId='$this->id'";
 		mysqli_query(self::$conn,$query);
 	}
@@ -101,7 +118,8 @@ class Product{
 	}
 	function productByType($type) {
 		// select product where aviable and quantity>0 and id 
-		$query = "select * from products where quantity > 0 and type_id ='$type'";
+		$query = "select * from products where quantity > 0 and subType_id in (select id from subType , types where subType.tid=types.tid and types.name='$type')";
+		//echo $query;
 		$result = mysqli_query(self::$conn,$query);
 		$data = [];
 		while($row = mysqli_fetch_assoc($result)) {
@@ -145,7 +163,7 @@ class Product{
 		return $data;
 	}
 
-	function comments($id=-1){
+	/*function comments($id=-1){
 		if($id==-1) {
 			$id = $this->id;
 		}

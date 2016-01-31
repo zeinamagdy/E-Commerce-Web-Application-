@@ -12,8 +12,7 @@
 	{
 		position:absolute;
 		margin-left:450px;
-		/*width:213px;
-		height:192px;*/
+		
 	}
 	#num
 	{
@@ -24,8 +23,7 @@
 
 	</style>
 </head>
-<?php
-	session_start();	
+<?php	
 	include 'head.php';
 	include 'products.php';
 	// select product by id
@@ -46,7 +44,7 @@
 			<br/>
 		</div>
 		<div>
-			<form action="shoppingCart.php?id=<?php echo $product->'pId';?>" method="post">
+			<form action="shoppingCart.php?id=<?php echo $product->id;?>" method="post">
 				<table>
 					<tr>
 						<td><input type="text" id="num" name="num"></td>

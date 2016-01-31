@@ -1,8 +1,3 @@
-<head>
-	<style>
-		
-	</style>
-</head>
 <?php
 	
 	include 'head.php';
@@ -40,7 +35,7 @@ $total_records = count($p);
 
 //Using ceil function to divide the total records on per page
 $total_pages = ceil($total_records / 9);
-echo $total_pages;
+
 
 //Going to first page
 echo "<center><a href='AllProduct.php?page=1'>".'First Page'."</a> ";

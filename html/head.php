@@ -5,17 +5,34 @@
 <title>Baby Shop</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link rel="stylesheet" type="text/css" href="style.css" />
-
+<script src='js/jquery.min.js'></script>
+<script src="js/jquery.query-2.1.7.js"></script>
+<script src="js/index.js"></script>     
 </head>
 
 <body>
 	<div>
 		<a href="#"><img src="images/logo.gif" width="237" height="123" class="float" alt="setalpm" /></a>	                                                                                                                                                                                                                                                                                                            																																																																
       <div class="topnav">
-			<span><strong>Welcome</strong> &nbsp;<a href="login.php">Log in</a> &nbsp; | &nbsp;
+			<span><strong>Welcome</strong> &nbsp;<!--<a href="login.php">Log in</a> &nbsp; | &nbsp;-->
+				  <?php
+			    session_start();
+			if(isset($_SESSION['uid'])){
+			    echo "<a href='logout.php'>Log out</a> &nbsp; | &nbsp;";
+			    }
+			    else
+			{
+				echo "<a href='login.php'>Log in</a> &nbsp; | &nbsp;";
+
+			}
+		
+			?>
 			 <a href="registration.php">Register</a></span> 
 			<select onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
 				<option value="">Type of Product</option>
+				
+				
+				
 				<option value="selectedType.php?type=1">Clothing</option>
 				<option value="selectedType.php?type=2">Toyes</option>
 				<option value="selectedType.php?type=3">Food</option>
@@ -26,8 +43,8 @@
 			<span >	
 				 <div id="tfheader">
       				<form id="tfnewsearch" method="get" action="selectedType.php">
-              			<input class="tftextinput" name="q" size="21" maxlength="120">
-              			<input class="tftextinput" name="price" size="21" maxlength="120">
+              			<input class="tftextinput"  placeholder="Enter Type" name="type" size="21" maxlength="120">
+              			<input class="tftextinput" placeholder=" Enter price" name="price" size="21" maxlength="120">
               			<input type="submit" value="search" class="tfbutton">
       				</form>
    				<div class="tfclear"></div>
@@ -57,10 +74,16 @@
 				<div id="cart">
 					<strong>Shopping cart:</strong> <br />
 					<?php
+					//	session_start();
 						include 'order.php';
 						$order = new Order();
-						$demand= $order->userOrder(1);// it will convert to userOrder($_session['uid']);
-						echo'<b>'.count($demand).' </b>products';
+						$num = 0;
+						if(isset($_SESSION['uid']))
+						{
+							$demand= $order->userOrder($_SESSION['uid']);// it will convert to userOrder($_session['uid']);
+							$num = count($demand);
+						}
+							echo '<b> <span id="cart_num">'. $num . '</span> products</b>';
 					?>
 				</div>
 			</div>
@@ -88,3 +111,8 @@
 			</div>
 		</div>
 		<div id="main">
+		<?php
+			function updateCart($num){
+				echo "<script> $('#cart_num').html('" . $num . "'); </script>";
+			} 
+		?>

@@ -11,7 +11,7 @@ class User{
 
 	function __construct($id=-1) {
 		if(self::$conn == Null) {
-			self::$conn = mysqli_connect('localhost','root','iti','project');
+			self::$conn = mysqli_connect('localhost','root','iti','babyshop');
 		}
 
 		if($id!=-1) {
@@ -69,8 +69,7 @@ class User{
 	}
 
 	function updateCredite($orderPrice,$id) {
-		$query = "update users set  credit='$orderPrice' where uid='$id'";
-		echo $query;
+		$query = "update users set credit='$orderPrice' where uid='$id'";
 		mysqli_query(self::$conn,$query);
 	}
 	#---------------------Edite to update block user

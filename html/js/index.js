@@ -5,8 +5,18 @@ var fadeTime = 300;
 
 
 /* Assign actions */
-$('.product-quantity input').change( function() {
-  updateQuantity(this);
+$('.product-quantity input').change( function(e) {
+  q=updateQuantity(this);
+  var i = $(e.currentTarget).attr('data-oid');
+  console.log(i);
+    $.ajax({
+        type: "GET",
+        url: 'updateQuantity.php?oid='+i+'&q='+q,
+    })
+    .done(function() {
+      //location.href = "shoppingCart.php";
+      console.log("success");
+    })
 });
 $('.product-removal button').click( function(e) {
   removeItem(this);
@@ -22,6 +32,7 @@ $('.product-removal button').click( function(e) {
     })
 });
 $('.checkout').click( function(e){
+
   window.location='checkout.php';
 
 });
@@ -65,6 +76,8 @@ function updateQuantity(quantityInput)
   var productRow = $(quantityInput).parent().parent();
   var price = parseFloat(productRow.children('.product-price').text());
   var quantity = $(quantityInput).val();
+  console.log(quantity);
+  
   var linePrice = price * quantity;
   
   /* Update line price display and recalc cart totals */
@@ -74,7 +87,8 @@ function updateQuantity(quantityInput)
       recalculateCart();
       $(this).fadeIn(fadeTime);
     });
-  });  
+  }); 
+  return quantity; 
 }
 
 

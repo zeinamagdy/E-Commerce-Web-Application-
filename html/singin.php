@@ -9,20 +9,30 @@
   	}
   	else
   	{
-  		echo"<pre>";echo print_r($_POST);echo "</pre>";
+  		echo"<pre>";print_r($_POST);echo "</pre>";
   		$username=$_POST['username'];
   		$password=$_POST['password'];
-  		$conn=mysqli_connect("localhost","root","iti","project");
-  		$query=mysqli_query($conn,"select uid from users where username='$username' and password='$password'");
+  		$conn=mysqli_connect("localhost","root","iti","babyshop");
+  		$query=mysqli_query($conn,"select * from users where username='$username' and password='$password'");
   		$result=mysqli_fetch_assoc($query);
   		$row=mysqli_num_rows($query);
   		echo $row;
+      print_r($result);
   		  if($row==1)
   		{
-  			$_SESSION['log_user']=$username;
-  			$_SESSION['uid']=$result['uid'];
+        if($result['isAdmin']==1)
+        {
+            $_SESSION['log_user']=$username;
+        $_SESSION['uid']=$result['uid'];
+          header("location:admin/home.php");
+        }else{
+            $_SESSION['log_user']=$username;
+        $_SESSION['uid']=$result['uid'];
+         header("location:index.php");
+        }
+  		
 
-  			header("location:myAccount.php");
+  			
   		}
   		else
   		{

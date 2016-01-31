@@ -1,10 +1,11 @@
 <?php
+	session_start();
 	include 'products.php';
 	include 'order.php';
 	include 'user.php';
 	$order = new Order();
 	$product=new Product();
-	$user=new user(1);// will get from session
+	$user=new user($_SESSION['uid']);// will get from session
 	$_GET['pid'];
 	if($_GET['pid'])
 	{

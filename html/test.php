@@ -18,7 +18,7 @@
 	</style>
 </head>
 <?php
-	session_start();
+	//session_start();
 	include 'head.php';
 	include 'products.php';
 	
@@ -39,13 +39,13 @@
 				Price: ".$product->price."$</br>
 				Quantity: ".$product->quantity?></p>
 			<br />
-
+			
 			<a href='shoppingCart.php?id=<?=$product->id?>' class='button'>Add to cart</a>
 		</div>
 
 	</div>
 <?php
-$_session['uid']=1;// change accourding current user
+//$_session['uid']=1;// change accourding current user
 $session['quentity']=1; //will change if user define quantity
 
 	include'footer.php';

@@ -4,7 +4,7 @@
 	include 'head.php';	
 	if(isset($_SESSION)){
 	$id=$_SESSION['uid'];
-	$conn=mysqli_connect("localhost","root","iti","project");
+	$conn=mysqli_connect("localhost","root","iti","babyshop");
 	$query=mysqli_query($conn,"select * from users where uid='$id'");
 	$result=mysqli_fetch_assoc($query);
 	print_r($result);
