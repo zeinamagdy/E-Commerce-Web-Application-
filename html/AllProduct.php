@@ -31,7 +31,7 @@ $start_from = ($page-1) * $per_page;
 <?php
 }
 echo "</div>";
-$total_records = count($p);
+/*$total_records = count($p);
 
 //Using ceil function to divide the total records on per page
 $total_pages = ceil($total_records / 9);
@@ -47,6 +47,6 @@ echo "<a href=AllProduct.php?page=".$i.">".$i."</a>";
 // Going to last page
 echo "<a href=’pagination.php?page=$total_pages'>".'Last Page'."</a></center>";
 
-
+*/
 	include'footer.php';
 ?>

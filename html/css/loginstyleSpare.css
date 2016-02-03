@@ -29,7 +29,7 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-	background:#eee;
+	background:url("../images/1.jpg");
 	font-family: 'Open Sans', sans-serif;
 }
 .main{
@@ -150,7 +150,7 @@ form{
   -moz-border-radius:0.3em;
   -o-border-radius:0.3em;
    color:#4D4949;
-  background:#F3F3F3;
+  background:#99CCCC;
   border:1px solid #EBEBEB;
   font-weight:bold;
   font-size:15px;

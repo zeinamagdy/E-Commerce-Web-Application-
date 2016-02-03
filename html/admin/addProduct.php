@@ -4,8 +4,8 @@ include 'subcategoryclass.php';
 $product=new product;
 
 if(isset($_POST['addp']))
-{
-	if(!empty(trim($_POST['scatname']))&&!empty(trim($_POST['pname']))&&!empty(trim($_POST['desc']))&&!empty(trim($_POST['quantity']))&&!empty(trim($_POST['price']))&&!empty(trim($_POST['pdate']))&&!empty(trim($_FILES['image']['tmp_name']))){
+{ print_r($_POST);
+	//if(!empty(trim($_POST['scatname']))&&!empty(trim($_POST['pname']))&&!empty(trim($_POST['desc']))&&!empty(trim($_POST['quantity']))&&!empty(trim($_POST['price']))&&!empty(trim($_POST['pdate']))&&!empty(trim($_FILES['image']['tmp_name']))){
 		//$pid=$product->getproductId();
 		//echo $pid;
 		$subType_id=$_POST['scatname'];
@@ -24,7 +24,7 @@ if(isset($_POST['addp']))
 		move_uploaded_file($product_img,"../images/items/$imgname");
 		//move_uploaded_file($product_img,"../products_img/1.jpg");
 		$product->insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate);
-		}
+		//}
 		//header("location:addProduct.php");
 	}
 }
@@ -32,7 +32,7 @@ if(isset($_POST['addp']))
 include 'Aheader.php';
 ?>
 
-<form enctype="multipart/form-data" action="addProduct.php" method="post">	
+<form action="addProduct.php" enctype="multipart/form-data" method="post">	
 <div id="inside">
 	<table  width="500px" align="center">
 		<tr><th colspan="3"><h2>Add new product</h2></th></tr>
@@ -97,11 +97,10 @@ include 'Aheader.php';
 ?>
 
 		<div class="item">
-			<a href="../itemDetails.php?id=<?php echo $product['pid']; ?>"><img src="../<?php echo $pimg; ?>" width="213" height="192" /></a>
-			<a href="../itemDetails.php?id=<?php echo $product['pid']; ?>" ><?php  echo $product['name'];  ?></a><span class="price">$<?php echo $product['price']; ?></span>
-			<a href="editProduct.php?id=<?php echo $product['pId']; ?>&name=<?php echo $product['name']; ?>">edit</a>
+			<a href="../itemDetails.php?id=<?php echo $product['pId']; ?>"><img src="../<?php echo $pimg; ?>" width="213" height="192" /></a>
+			<a href="../itemDetails.php?id=<?php echo $product['pId']; ?>" ><?php  echo $product['name'];?></a><span class="price">$<?php echo $product['price']; ?></span>
+			<a href="editpronew.php?id=<?php echo $product['pId']; ?>&name=<?php echo $product['name']; ?>">edit</a>
 			<a href="removeProduct.php?id=<?php echo $product['pId']; ?>">delete</a>
-
 		</div>
 		 
 		

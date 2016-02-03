@@ -1,12 +1,27 @@
 <?php
 include '../products.php';
 $id=$_GET['id'];
-$name=$_GET['name'];
-$desc=$_GET['desc'];
+$myproduct=new product($id);
+$name=$myproduct->name;
+$price=$myproduct->price;
+$quantity=$myproduct->quantity;
+$image=$myproduct->image;
+$desc=$myproduct->descr;
+/*$p=$myproduct->product();
+$name=$p['name'];
+$price=$p['price'];
+$quantity=$p['quantity'];
+$img=$p['image'];*/
+print_r($_GET);
+
+echo $_GET['id'];
+//$name=$_GET['name'];
+
+/*$desc=$_GET['desc'];
 $quantity=$_GET['quantity'];
 $image=$_GET['image'];
 $subType_id=$_GET['subType_id'];
-$price=$_GET['price'];
+$price=$_GET['price'];*/
 
 include 'Aheader.php';
 ?>
@@ -35,24 +50,24 @@ include 'Aheader.php';
             <tr>
              <th>product name</th>
              <td class="col-md-3"><?php echo $name;?></td>
-             <td class="col-md-3"><a href="editp1.php?id="<?php echo $id;?>"&action=updaten">Edit</a></td>
+             <td class="col-md-3"><a href='updatep1.php?id= <?php echo $id; ?>&action=updaten&name=<?php echo $name; ?>'>Edit</a></td>
              </tr>
              <tr>
                <th>quantity</th>
                <td class="col-md-3"><?php echo $quantity;?></td>
-               <td class="col-md-3"><a href="editquantity.php">Edit</a></td>
+               <td class="col-md-3"><a href='updatep1.php?id= <?php echo $id; ?>&action=updateq&name=<?php echo $name; ?>'>Edit</a></td>
              </tr>
              <tr>
                <th>price</th>
                <td class="col-md-3"><?php echo $price;?></td>
-               <td class="col-md-3"><a href="editprice.php">Edit</a></td>
+               <td class="col-md-3"><a href="updatep1.php?id= <?php echo $id; ?>&action=updatep&name=<?php echo $name; ?>">Edit</a></td>
              </tr>
               <tr>
                <th>image</th>
-               <td class="col-md-3"><img src="../products_img/<?php echo $image; ?>" width="100" height="100" /></td>
+               <td class="col-md-3"><img src="../<?php echo $image; ?>" width="100" height="100" /></td>
              <!-- <td class="col-md-3"><input type="file" name="image" class="form-control"/></td>
 -->
-               <td class="col-md-3"><a href="editimage.php">Edit</a></td>
+               <td class="col-md-3"><a href="updatep1.php?id= <?php echo $id; ?>&action=updatei&name=<?php echo $name; ?>">Edit</a></td>
              
              </tr> 
              

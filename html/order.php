@@ -11,7 +11,7 @@ class Order{
 
 	function __construct($id=-1) {
 		if(self::$conn == Null) {
-			self::$conn = mysqli_connect('localhost','root','iti','babyshop');
+			self::$conn = mysqli_connect('localhost','root','iti','project');
 		}
 
 		if($id!=-1) {
@@ -54,11 +54,12 @@ class Order{
 	function updateQuantity($oid,$q)
 	{
 		$query = "update orders set num_items='$q' where oid='$oid'";
+		echo $query;
 		mysqli_query(self::$conn,$query);
 	}
-	function updateOrderPrice($p)
+	function updateOrderPrice($p,$oid)
 	{
-		$query = "update orders set total_price='$p' where oid='$oid'";
+		$query = "update orders set total_price=total_price +'$p' where oid='$oid'";
 		mysqli_query(self::$conn,$query);
 	}
 
@@ -80,7 +81,7 @@ class Order{
 	}
 	function OrderQuantity($oid){
 		
-		$query = "select num_items from orders where oid='$oid'";
+		$query = "select * from orders where oid='$oid'";
 		$result = mysqli_query(self::$conn,$query);
 		$data = [];
 		while($row = mysqli_fetch_assoc($result)) {
@@ -105,7 +106,7 @@ class Order{
 			$id = $this->id;
 		}
 		$query = " select sum(total_price) as sum from orders where orders.user_id=$id";
-		
+		echo $query;
 		$result = mysqli_query(self::$conn,$query);
 		$row = mysqli_fetch_assoc($result);
 		return $row;
