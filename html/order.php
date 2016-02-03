@@ -105,7 +105,7 @@ class Order{
 			$id = $this->id;
 		}
 		$query = " select sum(total_price) as sum from orders where orders.user_id=$id";
-		echo $query;
+		
 		$result = mysqli_query(self::$conn,$query);
 		$row = mysqli_fetch_assoc($result);
 		return $row;

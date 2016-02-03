@@ -39,7 +39,8 @@
 				Price: ".$product->price."$</br>
 				Quantity: ".$product->quantity?></p>
 			<br />
-			
+			<br />
+			<br />
 			<a href='shoppingCart.php?id=<?=$product->id?>' class='button'>Add to cart</a>
 		</div>
 

@@ -1,9 +1,9 @@
 <?php
 		include 'head.php';
 		include 'products.php';
-		/*$product = new Product();
-		$newProducts=$product->Newproduct();*/
-		//foreach ($newProducts as $key => $value) {
+		$product = new Product();
+		$newProducts=$product->Newproduct();
+		//
 ?>
 
 				
@@ -19,30 +19,15 @@
 				</div>
 				<img src="images/title4.gif" alt="" width="159" height="17" /><br />
 				<div id="items">
+				<?php
+				foreach ($newProducts as $key => $product) { ?>
 					<div class="item">
-						<a href="#"><img src="images/items/item1.jpg" width="213" height="192" /></a><br />
-						<p><a href="#">Product 01</a></p><span class="price">$125</span><br />
+					<a href="test.php?id=<?php echo $product['pId']; ?>"><img src=<?php echo $product['image']; ?> width="213" height="192" /></a><br />
+					<p><a href="itemDetails.php?id=<?php echo $product['pId']; ?>"><?php  echo $product['name'];  ?></a></p><span class="price">$<?php echo $product['price']; ?></span><br />
 					</div>
-					<div class="item center">
-						<a href="#"><img src="images/items/item2.jpg" width="213" height="192" /></a><br />
-						<p><a href="#">Product 02</a></p><span class="price">$215</span><br />
-					</div>
-					<div class="item">
-						<a href="#"><img src="images/items/item3.jpg" width="213" height="192" /></a><br />
-						<p><a href="#">Product 03</a></p><span class="price">$85</span><br />
-					</div>
-					<div class="item">
-						<a href="#"><img src="images/items/item4.jpg" width="213" height="192" /></a><br />
-						<p><a href="#">Product 04</a></p><span class="price">$35</span><br />
-					</div>
-					<div class="item center">
-						<a href="#"><img src="images/items/item5.jpg" width="213" height="192" /></a><br />
-						<p><a href="#">Product 05</a></p><span class="price">$27</span><br />
-					</div>
-					<div class="item">
-						<a href="#"><img src="images/items/item6.jpg" width="213" height="192" /></a><br />
-						<p><a href="#">Product 06</a></p><span class="price">$40</span><br />
-					</div>
+					<?php } ?>
+
+				
 				</div>
 			</div>
 		</div>

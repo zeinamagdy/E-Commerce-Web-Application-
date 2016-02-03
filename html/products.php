@@ -70,6 +70,36 @@ function insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate) {
 		mysqli_query(self::$conn,$query);
 	}
 
+	function updatename($id,$name){
+		$qurery="UPDATE products SET name='$pname' WHERE pId=$id";
+		mysqli_query(self::$conn,$query);
+
+	}
+
+	function updatedesc($id,$desc){
+		$qurery="UPDATE products SET descr='$desc' WHERE pId=$id";
+		mysqli_query(self::$conn,$query);
+
+	}
+
+	function updatequantity($id,$quantity){
+		$qurery="UPDATE products SET quantity='$quantity' WHERE pId=$id";
+		mysqli_query(self::$conn,$query);
+
+	}
+
+	function updateimage($id,$image){
+		$qurery="UPDATE products SET image='$image' WHERE pId=$id";
+		mysqli_query(self::$conn,$query);
+
+	}
+
+	function updateprice($id,$price){
+		$qurery="UPDATE products SET price='$price' WHERE pId=$id";
+		mysqli_query(self::$conn,$query);
+
+	}
+
 	function insert1() {
 		$query = "insert into products(name,descr,quantity,image,price) values('$this->name','$this->descr','$this->quantity','$this->image','$this->price')";
 		$result  = mysqli_query(self::$conn,$query);
@@ -108,7 +138,7 @@ function insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate) {
 	}
 	function Newproduct() {
 		// select product where aviable and quantity>0
-		$query = "select * FROM products ORDER BY pId DESC LIMIT 6 where quantity>0";
+		$query = "select * FROM products where quantity>0 ORDER BY pId DESC LIMIT 6 ";
 		$result = mysqli_query(self::$conn,$query);
 		$data = [];
 		while($row = mysqli_fetch_assoc($result)) {

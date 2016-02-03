@@ -86,7 +86,7 @@
 <?php
  }
  ?>
-  <div class="totals">
+  <!-- <div class="totals">
     <div class="totals-item">
       <label>Subtotal</label>
       <div class="totals-value" id="cart-subtotal">71.97</div>
@@ -103,7 +103,7 @@
       <label>Grand Total</label>
       <div class="totals-value" id="cart-total">90.57</div>
     </div>
-  </div>      
+  </div>     -->  
       <button class="checkout" <?php if(isset($_GET['id']) && $reminder<0) echo "disabled"; ?> >Checkout</button>
 </div>
 
