@@ -7,10 +7,8 @@ var fadeTime = 300;
 /* Assign actions */
 $('.product-quantity input').change( function(e) {
   q=updateQuantity(this);
-  e.preventDefault();
   var i = $(e.currentTarget).attr('data-oid');
   console.log(i);
-  console.log (q);
     $.ajax({
         type: "GET",
         url: 'updateQuantity.php?oid='+i+'&q='+q,
@@ -38,8 +36,6 @@ $('.checkout').click( function(e){
   window.location='checkout.php';
 
 });
-
-
 
 
 /* Recalculate cart */
