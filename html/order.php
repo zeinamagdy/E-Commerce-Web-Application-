@@ -11,7 +11,7 @@ class Order{
 
 	function __construct($id=-1) {
 		if(self::$conn == Null) {
-			self::$conn = mysqli_connect('localhost','root','iti','project');
+			self::$conn = mysqli_connect('localhost','root','iti','babyshop');
 		}
 
 		if($id!=-1) {
