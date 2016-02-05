@@ -41,7 +41,7 @@ class Product{
 	}
 	#-------------------------------------------------------------------
 	public function getUserId($id){
-		$query = "select * from users where id=$id limit 1";
+		$query = "select * from products where pId=$id limit 1";
 		$result = mysqli_query(self::$conn,$query);
 		$user = mysqli_fetch_assoc($result);
 		$this->id = $user['id'];
@@ -55,9 +55,9 @@ class Product{
 
 function insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate) {
 	$query="INSERT INTO products(name,descr,quantity,image,subType_id,price,pdate) VALUES ('$pname','$desc','$quantity','images/items/$imgname','$subType_id','$price','$pdate')";
-		echo $query;
+		//echo $query;
 		$result  = mysqli_query(self::$conn,$query);
-
+		return mysqli_insert_id(self::$conn);
 		//return mysqli_insert_id(self::$conn);
 	}
 
@@ -153,6 +153,13 @@ function insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate) {
 			$data[] = $row;
 		}
 		return $data;
+	}
+
+		function lastproduct() {
+		// select product where aviable and quantity>0
+		$query = "select * from products where quantity>0 ORDER BY pId DESC LIMIT 1";
+		$result = mysqli_query(self::$conn,$query);
+		return $result;
 	}
 	function productByType($type) {
 		// select product where aviable and quantity>0 and id 

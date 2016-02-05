@@ -7,10 +7,10 @@ include '../products.php';
             //echo $product_id;
 			$product=new product;
 			$product->delete($product_id);
-			header("location:addProduct.php");
+			header("location:AllProduct.php");
 		}
 		else{
-			header("location:addProduct.php");
+			header("location:AllProduct.php");
 		}	
 
 ?>

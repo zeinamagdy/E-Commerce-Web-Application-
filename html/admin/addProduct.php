@@ -4,8 +4,8 @@ include 'subcategoryclass.php';
 $product=new product;
 
 if(isset($_POST['addp']))
-{ print_r($_POST);
-	//if(!empty(trim($_POST['scatname']))&&!empty(trim($_POST['pname']))&&!empty(trim($_POST['desc']))&&!empty(trim($_POST['quantity']))&&!empty(trim($_POST['price']))&&!empty(trim($_POST['pdate']))&&!empty(trim($_FILES['image']['tmp_name']))){
+{ //print_r($_POST);
+	if(!empty(trim($_POST['scatname']))&&!empty(trim($_POST['pname']))&&!empty(trim($_POST['desc']))&&!empty(trim($_POST['quantity']))&&!empty(trim($_POST['price']))&&!empty(trim($_POST['pdate']))&&!empty(trim($_FILES['image']['tmp_name']))){
 		//$pid=$product->getproductId();
 		//echo $pid;
 		$subType_id=$_POST['scatname'];
@@ -22,9 +22,9 @@ if(isset($_POST['addp']))
 		$type=$_FILES['image']['type'];
 		if(in_array($type, array('image/jpeg','image/png','image/jpg','image/gif'))){
 		move_uploaded_file($product_img,"../images/items/$imgname");
-		//move_uploaded_file($product_img,"../products_img/1.jpg");
-		$product->insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate);
-		//}
+		$p=$product->insert($pname,$desc,$quantity,$imgname,$subType_id,$price,$pdate);
+		
+		}
 		//header("location:addProduct.php");
 	}
 }
@@ -34,7 +34,10 @@ include 'Aheader.php';
 
 <form action="addProduct.php" enctype="multipart/form-data" method="post">	
 <div id="inside">
-	<table  width="500px" align="center">
+	<div class="container">
+	<div class="row">
+    <div class="col-md-9 personal-info">
+        <table class="table table-bordered table-hover table-striped table-responsive">
 		<tr><th colspan="3"><h2>Add new product</h2></th></tr>
 		<tr>
 
@@ -77,8 +80,8 @@ include 'Aheader.php';
 			<td><input type="text" name="pdate"/></td>
 		</tr>
 		<tr>
-			<td></td>
-			<td id="submit"><input type="submit" name="addp" value="Add" ></td>
+			
+			<th colspan="2" ><input type="submit" name="addp" value="Add" class = "btn btn-default btn-lg btn-block"></th>
 		</tr>
 	</table>
 	
@@ -90,7 +93,7 @@ include 'Aheader.php';
 
 <?php
 	$dis=new product;
-	$d=$dis->product();
+	$d=$dis->lastproduct();
 
 	foreach ($d as $key => $product) {
 		$pimg=$product['image'];
@@ -102,9 +105,10 @@ include 'Aheader.php';
 			<a href="editpronew.php?id=<?php echo $product['pId']; ?>&name=<?php echo $product['name']; ?>">edit</a>
 			<a href="removeProduct.php?id=<?php echo $product['pId']; ?>">delete</a>
 		</div>
+		</div>
 		 
 		
-	
+</div>	
 <?php	
 }
 echo "</div></div>";

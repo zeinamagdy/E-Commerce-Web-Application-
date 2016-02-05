@@ -25,7 +25,7 @@
 <!--<span>Language:</span> <a href="#"><img src="images/flag1.jpg" alt="" width="21" height="13" /></a> <a href="#"><img src="images/flag2.jpg" alt="" width="21" height="13" /></a> <a href="#"><img src="images/flag3.jpg" alt="" width="21" height="13" /></a>-->
 			<span>	
 				 <div id="tfheader">
-      				<form id="tfnewsearch" method="get" action="selectedType.php">
+      				<form id="tfnewsearch" method="get" action="../selectedType.php">
               			<input type="text" class="tftextinput" name="q" size="21" maxlength="120">
               			<input type="submit" value="search" class="tfbutton">
       				</form>
@@ -57,11 +57,11 @@
 					<li><a href="removeSubcategory.php">Remove sub category</a></li>
 					<li><a href="removeProduct.php">Remove product</a></li>-->
 					
-					<li><a href="#">New products</a></li>
+					<li><a href="newproduct.php">New products</a></li>
 					<li><a href="AllProduct.php">All products</a></li>
 					<li><a href="reviewcustomers.php">Review customers</a></li>
-					<li><a href="#">F.A.Q.</a></li>
-					<li><a href="#">Contacts</a></li>
+					<!-- <li><a href="#">F.A.Q.</a></li>
+					<li><a href="#">Contacts</a></li> -->
 				</ul>
 				<!-- <div id="cart">
 					<strong>Shopping cart:</strong> <br /> 0 items
@@ -81,13 +81,13 @@
 					<li><a href="#">Outdoors</a></li>
 					<li><a href="#">TV &amp; Films</a></li>
 				</ul>
-				<img src="../images/title2.gif" alt="" width="233" height="41" /><br />																																																																																																																																																															
-				<div class="review">
+				<!--<img src="../images/title2.gif" alt="" width="233" height="41" /><br />																																																																																																																																																															
+				 <div class="review">
 					<a href="#"><img src="../images/pic1.jpg" alt="" width="181" height="161" /></a><br />
 					<a href="#">Product 07</a><br />
 					<p>Dolor sit amet, consetetur sadipscing elitr, seddiam nonumy eirmod tempor. invidunt ut labore et dolore magna </p>
 					<img src="../images/stars.jpg" alt="" width="118" height="20" class="stars" />
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div id="main">

@@ -9,7 +9,7 @@ include '../products.php';
 
 <?php
 	$dis=new product;
-	$d=$dis->product();
+	$d=$dis->Newproduct();
 
 	foreach ($d as $key => $product) {
 		$pimg=$product['image'];
