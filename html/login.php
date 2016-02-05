@@ -13,7 +13,7 @@
     
 	<!-- General meta information -->
 	<title>Login Form </title>
-	
+	<script src="js/jquery-1.11.3.min.js"></script>
 	<style type="text/css" >
 	    body{
 	    	background-color:#F0F0F0 ;
@@ -22,24 +22,24 @@
 	   #main {
           width:960px;
           margin:50px auto;
-          font-family:raleway
+          font-family:raleway;
          
              }
 		span {
-		color:red
+		color:red;
 		     }
 		h3 {
 		/*background-color:#FEFFED;*/
 		text-align:center;
 		border-radius:10px 10px 0 0;
 		margin:-10px -40px;
-		padding:15px
+		padding:15px;
 		   }
 		hr {
 		border:0;
 		border-bottom:1px solid #ccc;
 		margin:10px -40px;
-		margin-bottom:30px
+		margin-bottom:30px;
 		   }
 		#login {
 			
@@ -51,7 +51,7 @@
 		font-family:raleway;
 		border:2px solid #ccc;
 		padding:10px 40px 25px;
-		margin-top:70px
+		margin-top:70px;
 		      }
 		#label{
 			margin: -top:20px; 
@@ -64,7 +64,7 @@
 		border:1px solid #ccc;
 		padding-left:5px;
 		font-size:16px;
-		font-family:raleway
+		font-family:raleway;
 		     }
 		input[type=submit] {
 		width:100%;
@@ -76,7 +76,7 @@
 		cursor:pointer;
 		border-radius:5px;
 		margin-top:15px;
-		margin-bottom:15px
+		margin-bottom:15px;
          }
         
 		
@@ -86,6 +86,35 @@
 	
 </head>
 <body>
+    <script>
+            $(function() {
+ 
+                if (localStorage.chkbx && localStorage.chkbx != '') {
+                    $('#remember_me').attr('checked', 'checked');
+                    $('#username').val(localStorage.username);
+                    $('#password').val(localStorage.password);
+                } else {
+                    $('#remember_me').removeAttr('checked');
+                    $('#username').val('');
+                    $('#password').val('');
+                }
+ 
+                $('#remember_me').click(function() {
+ 
+                    if ($('#remember_me').is(':checked')) {
+                        // save username and password
+                        localStorage.username = $('#username').val();
+                        localStorage.password = $('#password').val();
+                        localStorage.chkbx = $('#remember_me').val();
+                    } else {
+                        localStorage.username = '';
+                        localStorage.password = '';
+                        localStorage.chkbx = '';
+                    }
+                });
+            });
+ 
+        </script>
 
 	<div id="main">
       
@@ -95,7 +124,7 @@
             <div id="label" >        
               <label>UserName :</label>
              </div>
-              <input id="name" name="username" placeholder="username" type="text" >
+              <input id="username" name="username" placeholder="username" type="text" >
                
               <div id="label">
               <label>Password :</label>
@@ -103,7 +132,9 @@
              
               <input id="password" name="password" placeholder="**********" type="password">
               
-              
+              <label class="checkbox">
+                    <input type="checkbox" value="remember-me" id="remember_me"> Remember Me
+                </label>
               <input name="submit" type="submit" value=" Login ">
              
              <span><?php echo $error; ?></span>

@@ -4,20 +4,21 @@ include '../user.php';
 ?>
 
 <div id="inside">
-<div id="items">
-<table>
+<!--<div id="items">-->
+<h3>review customers</h3>
+  <table class="table table-bordered table-hover table-striped table-responsive">
 
-	<caption>review customers</caption>
+	<caption></caption>
 	<thead>
 		<tr >
-			<th>name</th>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-			<th>username</th>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+			<th>name</th>
+			<th>username</th>
 			<th>birth date</th>
 			<th>job</th>
-			<th>email</th>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-			<th>credit</th>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-			<th>address</th>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-			<th>interests</th>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+			<th>email</th>
+			<th>credit</th>
+			<th>address</th>
+			<th>interests</th>
 			
 		</tr>
 	</thead>
@@ -49,9 +50,9 @@ include '../user.php';
 			<td><?php echo $user['credit'] ?></td>&nbsp; &nbsp; &nbsp; &nbsp;
 			<td><?php echo $user['address'] ?></td>&nbsp; &nbsp; &nbsp; &nbsp;
 			<td><?php echo $user['interests'] ?></td>&nbsp; &nbsp; &nbsp; &nbsp;
-	
+	</tr>
 <?php
 }
-echo "</tr></tbody></table></div></div>";
+echo "</tbody></table></div>";
 include 'Afooter.php';
 ?>

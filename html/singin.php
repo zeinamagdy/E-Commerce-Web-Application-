@@ -9,14 +9,14 @@
   	}
   	else
   	{
-  		echo"<pre>";print_r($_POST);echo "</pre>";
+  		//echo"<pre>";print_r($_POST);echo "</pre>";
   		$username=$_POST['username'];
   		$password=$_POST['password'];
   		$conn=mysqli_connect("localhost","root","iti","babyshop");
   		$query=mysqli_query($conn,"select * from users where username='$username' and password='$password'");
   		$result=mysqli_fetch_assoc($query);
   		$row=mysqli_num_rows($query);
-  		echo $row;
+  		//echo $row;
       print_r($result);
   		  if($row==1)
   		{

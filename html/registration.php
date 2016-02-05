@@ -13,6 +13,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 		<!--webfonts-->
+		
 		<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text.css'/>
 		<!--//webfonts-->  
    <?php
@@ -69,22 +70,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				    {  
 				       $emailerr = "Invalid email format";  
 				       $valid=false;  
-				      }  
+				     }  
                    }
-            /* if(empty($_POST['birth']))
-             {
-             	$emailerr="Missing the birthdate";
-             	$valid=false;
-             }         
-             else
-             {
-             	$birth1=test_input($_POST["birth"]);
-             	if(!preg_match("/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/",$birth))
-             	{
-             		$birtherr="Invalid birthdate";
-             		$valid=false;
-             	}
-             }*/
+           
              if (empty($_POST["username"])) 
              {  
 			     $usererr = "specify your username";  
@@ -140,7 +128,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      if(@$valid==true)
      {
      	
-     	$conn=mysqli_connect("localhost","root","iti","project");
+     	$conn=mysqli_connect("localhost","root","iti","babyshop");
      	@$n=$_POST['name'];
      	@$user=$_POST['username'];
      	@$pa=$_POST['pass'];
@@ -148,9 +136,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      	@$em=$_POST['email'];
      	@$cr=$_POST['credit'];
      	@$ad=$_POST['address'];
+     	@$birthd=$_POST['birth'];
      	@$interest=$_POST['in'];
      	
-            $query=mysqli_query($conn,"insert into users (name,username,password,email,credit,address,interest) values('$n','$user','$pa','$em','$cr','$ad','$interest')");
+            $query=mysqli_query($conn,"insert into users (name,username,password,birthdate,email,credit,address,interests) values('$n','$user','$pa','$birthd','$em','$cr','$ad','$interest')");
      	    echo $query;
      	    header("location:myAccount.php");
      	
@@ -163,6 +152,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </head>
 <body>
+     
+     
 	<div class="main">
 		<div class="header" >
 			<h1>Login or Create a Free Account!</h1>
@@ -175,7 +166,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					
 					<li>
 
-						<input type="text" name="name" value="<?php echo htmlspecialchars($name);?>" placeholder="FirstName*" type="text"/>
+						<input type="text" name="name" value="<?php echo htmlspecialchars($name);?>" placeholder="Name*" type="text"/>
 						<span><font color="red"><?php echo "&nbsp&nbsp&nbsp".$nameerr;?></font></span>
 						
 						<div class="clear"> </div>
@@ -217,6 +208,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						<span><font color="red"><?php echo "&nbsp&nbsp&nbsp".$adderr;?></font></span>
 						<div class="clear"> </div>
 					</li> 
+					<li>
+						<input name="birth" type="date"  id="datepicker" placeholder="Birthdate" />
+						<div class="clear"> </div>
+					</li>
 					<li>
 						<input type="text" name="in" placeholder="Your interests">
 						<div class="clear"></div>
