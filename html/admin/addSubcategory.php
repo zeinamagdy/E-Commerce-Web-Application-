@@ -18,7 +18,7 @@ include 'Aheader.php';
 ?>
 <form action="addSubcategory.php" method="post">	
 <div id="inside">
-	<table  width="500px" align="center">
+    <table class="table table-bordered table-hover table-striped table-responsive">
 		<tr>
 			<th>category name</th>
 
@@ -37,8 +37,8 @@ include 'Aheader.php';
 			<td><input type="text" name="subcatname"/></td>
 		</tr>
 		<tr>
-			<td></td>
-			<td id="submit"><input type="submit" name="Add" value="Add" ></td>
+			<th colspan="2"><input type="submit" name="Add" value="Add" class = "btn btn-default btn-lg btn-block"></th>
+			<!--<td id="submit"></td>-->
 		</tr>
 	</table>
 </div>	

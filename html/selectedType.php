@@ -33,6 +33,7 @@ if(count($price)>0)
 <?php
 	}
 }
+
 if(count($type)>0)
 {
 	foreach ($type as $key => $product) 

@@ -13,10 +13,14 @@ echo $id;
 
 include 'Aheader.php';
 ?>
+<div id="inside">
+	<div class="container">
+	<div class="row">
+    <div class="col-md-9 personal-info">
 <form action="updatescat.php" method="post">	
 <input type='hidden' name='scat_id' value='<?php echo $id; ?>'/>
 
-	<table  width="500px" align="center">
+    <table class="table table-bordered table-hover table-striped table-responsive">
 <!-- 		<tr>
 			<th>category name</th>
 
@@ -39,10 +43,12 @@ include 'Aheader.php';
 			<td></td>
 			<td id="submit"><input type="submit" name="save" value="Add" ></td>
 		</tr>
-	</table>
-</div>	
+	</table>	
 </form>
-
+</div>
+</div>
+</div>
+</div>
 <?php
 include 'Afooter.php';
 ?>
